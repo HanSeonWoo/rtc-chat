@@ -13,7 +13,6 @@ export default function Index() {
     if (name && name.trim()) {
       setUserName(name);
 
-      // userName 서버에 중복 확인 후 화면 이동.
       router.replace("/user-list");
     }
   };
