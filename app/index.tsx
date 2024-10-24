@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { Text, View, TextInput, Button } from "react-native";
 import { useRouter } from "expo-router";
 import { useAtom } from "jotai";
+import React, { useState } from "react";
+import { Button, Text, TextInput, View } from "react-native";
 import { userNameAtom } from "../atoms/atoms";
 
 export default function Index() {

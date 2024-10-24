@@ -18,21 +18,14 @@ export const ChatMessageItem: React.FC<Props> = React.memo(
     const isMe = message.from === currentUserName;
 
     return (
-      <View
-        style={[
-          styles.container,
-          {
-            flexDirection: "row",
-            alignSelf: !isMe ? "flex-start" : "flex-end",
-          },
-        ]}
-      >
+      <View style={styles.container}>
         {!isMe && (
           <>
             <Avatar name={message.from} />
             <View style={styles.avatarSpacing} />
           </>
         )}
+
         <View style={styles.messageContainer}>
           {!isMe && <Text style={styles.sender}>{message.from}</Text>}
           <View
@@ -65,6 +58,7 @@ export const ChatMessageItem: React.FC<Props> = React.memo(
 const styles = StyleSheet.create({
   container: {
     marginVertical: 4,
+    flexDirection: "row",
   },
   avatarSpacing: {
     width: 8,
@@ -82,7 +76,6 @@ const styles = StyleSheet.create({
     maxWidth: "80%",
     padding: 12,
     borderRadius: 16,
-    flexDirection: "row",
     alignItems: "flex-end",
   },
   myMessage: {
@@ -97,7 +90,6 @@ const styles = StyleSheet.create({
   },
   messageText: {
     fontSize: 15,
-    flex: 1,
   },
   myMessageText: {
     color: "#FFFFFF",
@@ -108,7 +100,7 @@ const styles = StyleSheet.create({
   timestamp: {
     fontSize: 11,
     color: "#999999",
-    marginLeft: 8,
+    marginTop: 8,
     alignSelf: "flex-end",
   },
 });
