@@ -1,4 +1,6 @@
+import { AdminMessageModal } from "@/components/AdminMessageModal";
 import Chat from "@/components/Chat";
+import { useAdminModal } from "@/hooks/useAdminModal";
 import { useChat } from "@/hooks/useChat";
 import { usePeer } from "@/hooks/usePeer";
 import BottomSheet from "@gorhom/bottom-sheet";
@@ -34,6 +36,8 @@ export default function Call() {
     renderBackdrop,
     handleSheetChanges,
   } = useChat();
+  const { adminMessage, handleCloseModal, modalVisible } = useAdminModal();
+  console.log("🚀 ~ Call ~ adminMessage:", adminMessage);
 
   const handleMuteToggle = () => {
     if (localStream) {
@@ -142,6 +146,12 @@ export default function Call() {
       >
         <Chat />
       </BottomSheet>
+
+      <AdminMessageModal
+        isVisible={modalVisible}
+        message={adminMessage}
+        onClose={handleCloseModal}
+      />
     </View>
   );
 }
