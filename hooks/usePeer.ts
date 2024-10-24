@@ -9,7 +9,7 @@ import {
   sessionConstraints,
 } from "@/atoms/webrtc";
 import { useAtom } from "jotai";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import {
   mediaDevices,
   RTCPeerConnection,
@@ -71,27 +71,29 @@ export const usePeer = () => {
     }
   };
 
-  const startCall = async (calleeName: string) => {
-    const offer = await peer.createOffer(sessionConstraints);
-    await peer.setLocalDescription(offer);
+  const startCall = useCallback(
+    async (calleeName: string) => {
+      const offer = await peer.createOffer(sessionConstraints);
+      await peer.setLocalDescription(offer);
+      socket.emit("offer", { to: calleeName, offer });
+    },
+    [peer, socket]
+  );
 
-    socket.emit("offer", { to: calleeName, offer });
-  };
-
-  const cleanupPeer = () => {
+  const cleanupPeer = useCallback(() => {
     if (peer) {
       peer.close();
       setPeer(new RTCPeerConnection(peerConstraints));
       setLocalStream(null);
       setRemoteStream(null);
       setConnectionState("new");
+      socket.emit("callEnd");
     }
-  };
+  }, [peer, socket]);
 
   useEffect(() => {
     mediaDevices.getUserMedia(mediaConstraints).then((mediaStream) => {
       mediaStream.getTracks().forEach((track) => {
-        console.log("🚀 ~ .forEach ~ track:", track.kind);
         peer.addTrack(track, mediaStream);
       });
       setLocalStream(mediaStream);
