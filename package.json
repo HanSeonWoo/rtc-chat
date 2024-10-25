@@ -4,8 +4,10 @@
   "version": "1.0.0",
   "scripts": {
     "start": "expo start",
-    "ios1": "expo run:ios -d DC748D17-A989-4492-9E5E-72DC5F4EBFAC",
-    "ios2": "expo run:ios -d C7BE61B9-4E40-4088-9FF6-57B306735070",
+    "ios1": "expo run:ios -d 21A21594-94EA-414B-8F81-5D1ACACB9A26",
+    "ios2": "expo run:ios -d DC748D17-A989-4492-9E5E-72DC5F4EBFAC",
+    "ios3": "expo run:ios -d 1F2D2757-8E64-47D3-97E4-92522CF8FF50",
+    "ios4": "expo run:ios -d CCDF40D6-318A-491F-AA2B-C19116D78A18",
     "reset-project": "node ./scripts/reset-project.js",
     "android": "expo run:android",
     "ios": "expo run:ios",
