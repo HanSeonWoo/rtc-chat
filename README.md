@@ -2,6 +2,10 @@
 
 React Native와 WebRTC를 활용한 실시간 화상 채팅 애플리케이션입니다.
 
+서버: https://github.com/HanSeonWoo/chat-socket
+
+관리자 페이지: https://github.com/HanSeonWoo/rtc-admin
+
 ## 설명 영상
 
 ## 프로젝트 간략한 설명 영상
